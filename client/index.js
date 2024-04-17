@@ -6,12 +6,16 @@ const serverUrl = 'http://localhost:1225';
 
 async function main() {
   // TODO: how do we prove to the server we're on the nice list? 
+  let name = "Okoye";
+  let index = niceList.findIndex(ele => ele === name);
+  if(index){
+    const { data: gift } = await axios.post(`${serverUrl}/gift`, {
+      name,
+      index
+    });
+    console.log({ gift });
+  }
 
-  const { data: gift } = await axios.post(`${serverUrl}/gift`, {
-    // TODO: add request body parameters here!
-  });
-
-  console.log({ gift });
 }
 
 main();
